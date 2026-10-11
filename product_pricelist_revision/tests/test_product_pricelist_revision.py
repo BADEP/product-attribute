@@ -1,12 +1,16 @@
 # Copyright 2019 Tecnativa - Ernesto Tejeda
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime, timedelta
+from datetime import timedelta
+
+from odoo import fields
 
 from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProductPricelistRevision(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -33,7 +37,7 @@ class TestProductPricelistRevision(BaseCommon):
         cls.pricelist_item_global = cls.pricelist_item_obj.create(
             {
                 "pricelist_id": cls.pricelist.id,
-                "compute_price": "formula",
+                "compute_price": "discount",
                 "price_discount": 15,
             }
         )
@@ -42,7 +46,7 @@ class TestProductPricelistRevision(BaseCommon):
                 "pricelist_id": cls.pricelist.id,
                 "applied_on": "2_product_category",
                 "categ_id": cls.product_category.id,
-                "compute_price": "formula",
+                "compute_price": "discount",
                 "price_discount": 10,
             }
         )
@@ -51,8 +55,8 @@ class TestProductPricelistRevision(BaseCommon):
                 "pricelist_id": cls.pricelist.id,
                 "applied_on": "1_product",
                 "product_tmpl_id": cls.product_template.id,
-                "compute_price": "percentage",
-                "percent_price": 5,
+                "compute_price": "discount",
+                "price_discount": 5,
             }
         )
         cls.pricelist_item_product_product = cls.pricelist_item_obj.create(
@@ -93,8 +97,8 @@ class TestProductPricelistRevision(BaseCommon):
         active_ids = self.pricelist_item_product_product.ids
         wizard = wizard_obj.with_context(active_ids=active_ids).create(
             {
-                "date_start": datetime.now(),
-                "date_end": datetime.now() + timedelta(hours=1),
+                "date_start": fields.Datetime.now(),
+                "date_end": fields.Datetime.now() + timedelta(hours=1),
                 "variation_percent": 50,
             }
         )

@@ -31,9 +31,9 @@
                     optional="show"
                 />
                 <field
-                    name="percent_price"
+                    name="price_discount"
                     string="Percent"
-                    invisible="compute_price != 'percentage'"
+                    invisible="compute_price != 'discount'"
                     optional="show"
                 />
                 <field name="variation_percent" optional="show" />

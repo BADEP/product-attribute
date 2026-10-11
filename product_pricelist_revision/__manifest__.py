@@ -4,7 +4,7 @@
 {
     "name": "Product Pricelist Revision",
     "summary": "Product Pricelist Revision",
-    "version": "19.0.1.0.1",
+    "version": "20.0.1.0.0",
     "category": "Product",
     "website": "https://github.com/OCA/product-attribute",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -12,8 +12,8 @@
     "installable": True,
     "depends": ["sale_management"],
     "data": [
-        "security/ir.model.access.csv",
         "views/pricelist_view.xml",
         "wizards/pricelist_duplicate_wizard_view.xml",
+        "security/ir.access.csv",
     ],
 }
