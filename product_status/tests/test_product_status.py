@@ -12,6 +12,8 @@ from odoo.addons.product.tests.common import ProductVariantsCommon
 
 @tagged("post_install", "-at_install")
 class TestProductStatusCase(ProductVariantsCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
