@@ -10,8 +10,9 @@ class SaleOrder(models.Model):
 
     def _get_matrix(self, product_template):
         order_lines = self.order_line.filtered(
-            lambda line: line.product_id
-            and line.product_template_id == product_template
+            lambda line: (
+                line.product_id and line.product_template_id == product_template
+            )
         )
         # Check if the secondary_uom_id is the same across all the order lines
         is_same_secondary_uom = all(
@@ -72,12 +73,11 @@ class SaleOrder(models.Model):
             # create or find product variant from combination
             product = product_template._create_product_variant(combination)
             order_lines = self.order_line.filtered(
-                lambda line,
-                product=product,
-                no_variant_attr_values=no_variant_attr_values: line.product_id.id
-                == product.id
-                and line.product_no_variant_attribute_value_ids.ids
-                == no_variant_attr_values.ids
+                lambda line, product=product, no_variant_attr_values=no_variant_attr_values: (
+                    line.product_id.id == product.id
+                    and line.product_no_variant_attribute_value_ids.ids
+                    == no_variant_attr_values.ids
+                )
             )
             order_lines.secondary_uom_id = secondary_unit
             order_lines.secondary_uom_qty = cell["qty"]
@@ -108,8 +108,9 @@ class SaleOrderLine(models.Model):
                 # Lines without a variant yet (e.g. the placeholder line that opens
                 # the configurator) aren't representative of any matrix cell.
                 template_lines = line.order_id.order_line.filtered(
-                    lambda x, tmpl=template: x.product_id
-                    and x.product_template_id == tmpl
+                    lambda x, tmpl=template: (
+                        x.product_id and x.product_template_id == tmpl
+                    )
                 )
                 force = len({x.secondary_uom_id.id for x in template_lines}) > 1
             line.force_product_configurator = force
