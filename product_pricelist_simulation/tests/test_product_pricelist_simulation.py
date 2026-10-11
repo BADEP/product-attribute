@@ -64,8 +64,8 @@ class TestProductPricelistSimulation(common.TransactionCase):
                         0,
                         {
                             "applied_on": "3_global",
-                            "compute_price": "percentage",
-                            "percent_price": 50.00,
+                            "compute_price": "discount",
+                            "price_discount": 50.00,
                         },
                     )
                 ],
