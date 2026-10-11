@@ -19,7 +19,7 @@ class ProductSupplierInfoDuplicateWizard(models.TransientModel):
 
     def action_apply(self):
         Supplierinfo = self.env["product.supplierinfo"]
-        new_ids = list()
+        new_ids = []
         for item in Supplierinfo.browse(self.env.context.get("active_ids")):
             new_ids.append(
                 item.copy(

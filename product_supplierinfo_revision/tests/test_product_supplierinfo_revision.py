@@ -2,10 +2,9 @@
 # Copyright 2018 Tecnativa - Vicent Cubells
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
-
 from dateutil.relativedelta import relativedelta
 
+from odoo import fields
 from odoo.tests import tagged
 
 from odoo.addons.base.tests.common import BaseCommon
@@ -13,11 +12,13 @@ from odoo.addons.base.tests.common import BaseCommon
 
 @tagged("post_install", "-at_install")
 class TestProductSupplierinfoRevision(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.vendor = cls.env["res.partner"].create({"name": "Suplier test"})
-        cls.today = datetime.today()
+        cls.today = fields.Date.today()
         cls.product_template = cls.env["product.template"].create(
             {
                 "name": "Test Product",
