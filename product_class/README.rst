@@ -21,13 +21,13 @@ Product Class
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproduct--attribute-lightgray.png?logo=github
-    :target: https://github.com/OCA/product-attribute/tree/19.0/product_class
+    :target: https://github.com/OCA/product-attribute/tree/20.0/product_class
     :alt: OCA/product-attribute
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/product-attribute-19-0/product-attribute-19-0-product_class
+    :target: https://translation.odoo-community.org/projects/product-attribute-20-0/product-attribute-20-0-product_class
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -50,30 +50,30 @@ setup and attribute management. It allows you to:
 Key Features
 ~~~~~~~~~~~~
 
-- **Bridge Model (``product.class.attribute.line``)** — Manages the
-  relationship between classes and attributes, storing both allowed
-  attributes and a ``required`` flag
-- **Strict Validation** — Products assigned to a class must:
+-  **Bridge Model (``product.class.attribute.line``)** — Manages the
+   relationship between classes and attributes, storing both allowed
+   attributes and a ``required`` flag
+-  **Strict Validation** — Products assigned to a class must:
 
-  - Use only attributes defined in that class
-  - Provide values for all required attributes
+   -  Use only attributes defined in that class
+   -  Provide values for all required attributes
 
-- **UI Enforcement** — Attribute selection in product forms is
-  restricted by the class domain filter
-- **Management Views** — Full CRUD interface for product classes
-  (Inventory > Configuration > Product Classes, Sales > Configuration >
-  Product Classes)
+-  **UI Enforcement** — Attribute selection in product forms is
+   restricted by the class domain filter
+-  **Management Views** — Full CRUD interface for product classes
+   (Inventory > Configuration > Product Classes, Sales > Configuration >
+   Product Classes)
 
 Technical Architecture
 ~~~~~~~~~~~~~~~~~~~~~~
 
-- ``product.class`` — Main product classification model
-- ``product.class.attribute.line`` — Bridge model linking classes to
-  attributes with a ``required`` flag
-- ``product.attribute`` (inherited) — Extended with reverse one-to-many
-  to track which classes use it
-- ``product.template`` (inherited) — Added class validation and computed
-  required-attribute tracking
+-  ``product.class`` — Main product classification model
+-  ``product.class.attribute.line`` — Bridge model linking classes to
+   attributes with a ``required`` flag
+-  ``product.attribute`` (inherited) — Extended with reverse one-to-many
+   to track which classes use it
+-  ``product.template`` (inherited) — Added class validation and
+   computed required-attribute tracking
 
 **Table of contents**
 
@@ -98,11 +98,11 @@ Configuration → Product Classes)
 
 3. In the **Attributes** section:
 
-   - Click **Add a line**
-   - Select an **Attribute** from the dropdown
-   - Check **Required** if products of this class must define this
-     attribute
-   - Repeat to add more attributes
+   -  Click **Add a line**
+   -  Select an **Attribute** from the dropdown
+   -  Check **Required** if products of this class must define this
+      attribute
+   -  Repeat to add more attributes
 
 4. Click **Save**
 
@@ -141,10 +141,10 @@ Once a class is selected, you can add attribute lines:
 4. Select an attribute and provide values
 5. **Validation will fail if:**
 
-   - You select an attribute not in the class → Error: "has attribute
-     lines that do not belong"
-   - You leave out a required attribute → Error: "is missing required
-     attributes"
+   -  You select an attribute not in the class → Error: "has attribute
+      lines that do not belong"
+   -  You leave out a required attribute → Error: "is missing required
+      attributes"
 
 4. Remove an Attribute from a Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -157,34 +157,34 @@ it.
 3. **Odoo will raise an error if products in this class still use
    Color**
 
-   - Fix: Remove Color from all products in the class first, then retry
-     the class update
+   -  Fix: Remove Color from all products in the class first, then retry
+      the class update
 
 Workflow Example
 ~~~~~~~~~~~~~~~~
 
 **Step 1: Set Up "Chairs" Class**
 
-- Color (required)
-- Size (required)
-- Leg Material (optional)
+-  Color (required)
+-  Size (required)
+-  Leg Material (optional)
 
 **Step 2: Create a "Wooden Chair" Product**
 
-- Assign class: "Chairs"
-- Add attribute "Color" = Red (satisfies required)
-- Add attribute "Size" = Large (satisfies required)
-- Add attribute "Leg Material" = Oak (optional, still valid)
-- **Save** ✓ Success
+-  Assign class: "Chairs"
+-  Add attribute "Color" = Red (satisfies required)
+-  Add attribute "Size" = Large (satisfies required)
+-  Add attribute "Leg Material" = Oak (optional, still valid)
+-  **Save** ✓ Success
 
 **Step 3: Try Invalid Assignment**
 
-- Assign class: "Chairs"
-- Add attribute "Color" = Blue (satisfies required)
-- **Try to save without Size** → Error: "is missing required attributes
-  for the selected class 'Chairs': Size"
-- Add Size = Medium
-- **Save** ✓ Success
+-  Assign class: "Chairs"
+-  Add attribute "Color" = Blue (satisfies required)
+-  **Try to save without Size** → Error: "is missing required attributes
+   for the selected class 'Chairs': Size"
+-  Add Size = Medium
+-  **Save** ✓ Success
 
 Class Attribute Line Model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,26 +207,26 @@ Constraints & Validations
 
 1. **Class Constraint** (``_check_attribute_ids_used_by_products``)
 
-   - Prevents removing an attribute from a class if products still use
-     it
-   - Error: "Cannot remove attributes used in products assigned to
-     class..."
+   -  Prevents removing an attribute from a class if products still use
+      it
+   -  Error: "Cannot remove attributes used in products assigned to
+      class..."
 
 2. **Product Constraint** (``_check_class_attributes``)
 
-   - Ensures all attribute lines belong to the class
-   - Ensures all required attributes are defined
-   - Error: "Product '...' has attribute lines that do not belong to the
-     selected class '...'"
-   - Error: "Product '...' is missing required attributes for the
-     selected class '...'"
+   -  Ensures all attribute lines belong to the class
+   -  Ensures all required attributes are defined
+   -  Error: "Product '...' has attribute lines that do not belong to
+      the selected class '...'"
+   -  Error: "Product '...' is missing required attributes for the
+      selected class '...'"
 
 Advanced: Access Control
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **User (base.group_user):** Can create/read/write product classes and
-  their attributes
-- **System/Admin (base.group_system):** Full CRUD including delete
+-  **User (base.group_user):** Can create/read/write product classes and
+   their attributes
+-  **System/Admin (base.group_system):** Full CRUD including delete
 
 Product class attribute lines follow the same access rules.
 
@@ -236,7 +236,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/product-attribute/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20product_class%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20product_class%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -272,6 +272,6 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-Ricardoalso| |maintainer-ivantodorovich| 
 
-This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/19.0/product_class>`_ project on GitHub.
+This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/20.0/product_class>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
