@@ -5,11 +5,13 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProductCategoryUoM(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.product_tmpl_obj = cls.env["product.template"]
-        cls.default_uom = cls.product_tmpl_obj._get_default_uom_id()
+        cls.default_uom = cls.product_tmpl_obj._default_uom_id()
         cls.uom = cls.env.ref("uom.product_uom_gram")
         cls.category = cls.env["product.category"].create(
             {"name": "Category Test", "uom_id": cls.uom.id}
