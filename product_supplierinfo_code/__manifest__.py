@@ -3,9 +3,8 @@
 
 {
     "name": "Product Supplierinfo Code",
-    "summary": """
-        Allows to get main supplierinfo product_code on product level""",
-    "version": "19.0.1.0.0",
+    "summary": "Allows to get main supplierinfo product_code on product level",
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/product-attribute",
