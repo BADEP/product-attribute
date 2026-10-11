@@ -29,14 +29,13 @@ class ProductCategory(models.Model):
         :param prefix: a string with the prefix of the sequence.
         :return: a dict with the values.
         """
-        vals = {
+        return {
             "name": "Product " + prefix,
             "code": "product.product - " + prefix,
             "padding": 5,
             "prefix": prefix,
             "company_id": False,
         }
-        return vals
 
     def write(self, vals):
         prefix = vals.get("code_prefix", False)

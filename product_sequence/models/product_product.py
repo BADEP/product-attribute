@@ -35,8 +35,7 @@ class ProductProduct(models.Model):
                 vals_list_updated.append(dict(vals, default_code=sequence.next_by_id()))
             else:
                 vals_list_updated.append(vals)
-        res = super().create(vals_list_updated)
-        return res
+        return super().create(vals_list_updated)
 
     def write(self, vals):
         """To assign a new internal reference, just write '/' on the field.

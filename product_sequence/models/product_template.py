@@ -19,9 +19,10 @@ class ProductTemplate(models.Model):
         """
         default = default or {}
         code = default.get("default_code")
+        records = self
         if code and code != "/":
-            self = self.with_context(product_sequence_default_code=code)
-        return super().copy(default=default)
+            records = self.with_context(product_sequence_default_code=code)
+        return super(ProductTemplate, records).copy(default=default)
 
     def _prepare_variant_values(self, combination):
         vals = super()._prepare_variant_values(combination)
