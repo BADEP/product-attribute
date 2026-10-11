@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2017-2021 Tecnativa - Carlos Dauden
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
@@ -98,8 +98,8 @@
         <field name="context">{'search_default_current_date':1}</field>
     </record>
     <menuitem
-        action="product_pricelist_item_action"
         id="menu_product_pricelist_item_action"
+        action="product_pricelist_item_action"
         parent="sale.product_menu_catalog"
         sequence="35"
         groups="product.group_product_pricelist"
