@@ -21,13 +21,13 @@ Product Dimension
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproduct--attribute-lightgray.png?logo=github
-    :target: https://github.com/OCA/product-attribute/tree/19.0/product_dimension
+    :target: https://github.com/OCA/product-attribute/tree/20.0/product_dimension
     :alt: OCA/product-attribute
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/product-attribute-19-0/product-attribute-19-0-product_dimension
+    :target: https://translation.odoo-community.org/projects/product-attribute-20-0/product-attribute-20-0-product_dimension
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -72,14 +72,14 @@ fragment is included. ]
 13.0.1.0.0 (2020-04-16)
 -----------------------
 
-- [MIG] Migration from Odoo 12.0 to 13.0
-- [IMP] Black, isort, prettier
+-  [MIG] Migration from Odoo 12.0 to 13.0
+-  [IMP] Black, isort, prettier
 
 16.0.1.0.0 (2022-10-11)
 -----------------------
 
-- [MIG] Migration from Odoo 15.0 to 16.0
-- [IMP] Black, isort, prettier (pre-commit)
+-  [MIG] Migration from Odoo 15.0 to 16.0
+-  [IMP] Black, isort, prettier (pre-commit)
 
 Bug Tracker
 ===========
@@ -87,7 +87,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/product-attribute/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20product_dimension%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20product_dimension%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -104,28 +104,22 @@ Authors
 Contributors
 ------------
 
-- Juan Jose Scarafia <jjs@ingadhoc.com>
-- Leonardo Pistone <leonardo.pistone@camptocamp.com>
-- Denis Leemann <denis.leemann@camptocamp.com>
-- Kumar Aberer <kumar.aberer@braintec-group.com>
-- `C2i Change 2 improve <http://www.c2i.es>`__:
+-  Juan Jose Scarafia <jjs@ingadhoc.com>
+-  Leonardo Pistone <leonardo.pistone@camptocamp.com>
+-  Denis Leemann <denis.leemann@camptocamp.com>
+-  Kumar Aberer <kumar.aberer@braintec-group.com>
+-  `C2i Change 2 improve <http://www.c2i.es>`__:
 
-  - Eduardo Magdalena <emagdalena@c2i.es>
+   -  Eduardo Magdalena <emagdalena@c2i.es>
 
-- Carlos Lopez <celm1990@gmail.com>
-- `Trobz <https://trobz.com>`__:
+-  Carlos Lopez <celm1990@gmail.com>
+-  `Trobz <https://trobz.com>`__:
 
-  - Thao Le <thaolt@trobz.com>
+   -  Thao Le <thaolt@trobz.com>
 
-- `Komit <https://komit-consulting.com/>`__
+-  `Komit <https://komit-consulting.com/>`__
 
-  - Hieu Vo Minh Bao <hieu.vmb@komit-consulting.com>
-
-Other credits
--------------
-
-The migration of this module from 16.0 to 17.0 was financially supported
-by Camptocamp.
+   -  Hieu Vo Minh Bao <hieu.vmb@komit-consulting.com>
 
 Maintainers
 -----------
@@ -140,6 +134,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/19.0/product_dimension>`_ project on GitHub.
+This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/20.0/product_dimension>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
