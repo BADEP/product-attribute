@@ -8,6 +8,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestModule(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -27,11 +29,12 @@ class TestModule(BaseCommon):
     def _test_compute_and_constrains(self, model):
         # Set state should set country
         product = model.create({"name": "Test Name"})
-        self.assertEqual(product.state_id_domain, [])
+        # Json fields store an empty domain as False
+        self.assertFalse(product.state_id_domain)
 
         product.country_id = self.country_us
         self.assertEqual(
-            product.state_id_domain, [("country_id", "=", self.country_us.id)]
+            product.state_id_domain, [["country_id", "=", self.country_us.id]]
         )
 
         with self.assertRaises(ValidationError):

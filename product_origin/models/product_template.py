@@ -25,7 +25,7 @@ class ProductTemplate(models.Model):
         store=True,
     )
 
-    state_id_domain = fields.Binary(
+    state_id_domain = fields.Json(
         compute="_compute_state_id_domain",
         help="Technical field, used to compute dynamically state domain"
         " depending on the country.",
