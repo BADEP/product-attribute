@@ -3,8 +3,8 @@
 
 {
     "name": "UOM Alias",
-    "summary": """Adds alias for UOM""",
-    "version": "19.0.1.0.0",
+    "summary": "Adds alias for UOM",
+    "version": "20.0.1.0.0",
     "license": "LGPL-3",
     "development_status": "Production/Stable",
     "author": "Akretion, Odoo Community Association (OCA)",
@@ -12,7 +12,7 @@
     "maintainers": ["renatonlima"],
     "depends": ["uom"],
     "data": [
-        "security/ir.model.access.csv",
         "views/uom_uom.xml",
+        "security/ir.access.csv",
     ],
 }
