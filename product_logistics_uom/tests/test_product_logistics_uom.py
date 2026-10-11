@@ -8,6 +8,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProductLogisticsUom(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -21,10 +23,10 @@ class TestProductLogisticsUom(BaseCommon):
         cls.volume_uom_m3 = cls.env.ref("uom.product_uom_cubic_meter")
         cls.volume_uom_l = cls.env.ref("uom.product_uom_litre")
         # set volume in m3 and weight in kg
-        cls.env["ir.config_parameter"].set_param("product.weight_in_lbs", "0")
-        cls.env["ir.config_parameter"].set_param("product.volume_in_cubic_feet", "0")
+        cls.env["ir.config_parameter"].set_str("product.weight_in_lbs", "0")
+        cls.env["ir.config_parameter"].set_str("product.volume_in_cubic_feet", "0")
         cls.length_uom = cls.env["uom.uom"].create({"name": "Meter"})
-        cls.env["ir.config_parameter"].set_param(
+        cls.env["ir.config_parameter"].set_str(
             "product_default_length_uom_id", str(cls.length_uom.id)
         )
         cls.product_template = cls.env["product.template"].create(
@@ -118,8 +120,10 @@ class TestProductLogisticsUom(BaseCommon):
         variant.product_weight = 10
         self.product.product_volume = 10
         self.product.product_weight = 10
-        self.assertEqual(template.volume, 0.0)
-        self.assertEqual(template.volume, 0.0)
+        # Since 20.0, the template volume/weight is set when all variants share
+        # the same value.
+        self.assertEqual(template.volume, 10.0)
+        self.assertEqual(template.weight, 10.0)
         self.assertEqual(template.product_volume, 0.0)
         self.assertEqual(template.product_weight, 0.0)
         self.assertFalse(template.show_volume_uom_warning)  # for coverage
@@ -140,7 +144,7 @@ class TestProductLogisticsUom(BaseCommon):
         self.assertEqual(uom.id, self.length_uom.id)
 
     def test_compute_product_volume_single_variant(self):
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             "product_default_volume_uom_id", str(self.volume_uom_l.id)
         )
         product_template = self.product_template
@@ -150,7 +154,7 @@ class TestProductLogisticsUom(BaseCommon):
         self.assertEqual(product_template.product_volume, 7.5)
 
     def test_inverse_product_volume_single_variant(self):
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             "product_default_weight_uom_id", str(self.weigh_uom_kg.id)
         )
         product_template = self.product_template

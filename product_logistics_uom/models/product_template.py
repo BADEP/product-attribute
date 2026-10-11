@@ -67,26 +67,35 @@ class ProductTemplate(models.Model):
 
     @api.model
     def _get_volume_uom_id_from_ir_config_parameter(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        default_uom = get_param("product_default_volume_uom_id")
+        default_uom = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_int("product_default_volume_uom_id")
+        )
         if default_uom:
-            return self.env["uom.uom"].browse(int(default_uom))
+            return self.env["uom.uom"].browse(default_uom)
         return super()._get_volume_uom_id_from_ir_config_parameter()
 
     @api.model
     def _get_weight_uom_id_from_ir_config_parameter(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        default_uom = get_param("product_default_weight_uom_id")
+        default_uom = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_int("product_default_weight_uom_id")
+        )
         if default_uom:
-            return self.env["uom.uom"].browse(int(default_uom))
+            return self.env["uom.uom"].browse(default_uom)
         return super()._get_weight_uom_id_from_ir_config_parameter()
 
     @api.model
     def _get_length_uom_id_from_ir_config_parameter(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        default_uom = get_param("product_default_length_uom_id")
+        default_uom = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_int("product_default_length_uom_id")
+        )
         if default_uom:
-            return self.env["uom.uom"].browse(int(default_uom))
+            return self.env["uom.uom"].browse(default_uom)
         return super()._get_length_uom_id_from_ir_config_parameter()
 
     @api.depends(
