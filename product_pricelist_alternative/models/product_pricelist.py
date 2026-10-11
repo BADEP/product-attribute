@@ -170,8 +170,9 @@ class Pricelist(models.Model):
         """Alternative pricelists can not contain items based on other pricelist"""
         for pricelist in self:
             if pricelist.alternative_pricelist_ids.item_ids.filtered(
-                lambda item: item.compute_price == "formula"
-                and item.base == "pricelist"
+                lambda item: (
+                    item.compute_price == "formula" and item.base == "pricelist"
+                )
             ):
                 raise ValidationError(
                     self.env._(
