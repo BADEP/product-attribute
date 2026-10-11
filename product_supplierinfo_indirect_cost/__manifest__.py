@@ -5,7 +5,7 @@
     "license": "LGPL-3",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/product-attribute",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Product",
     "summary": "Add indirect cost percent and amount to supplier info",
     "depends": ["product"],
