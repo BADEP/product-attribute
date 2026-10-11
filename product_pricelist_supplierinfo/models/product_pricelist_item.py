@@ -32,12 +32,11 @@ class ProductPricelistItem(models.Model):
         help="Based on supplierinfo price without sale margin applied"
     )
 
-    def _compute_price(self, product, quantity, uom, date, currency=None, **kwargs):
-        result = super()._compute_price(
-            product, quantity, uom, date, currency, **kwargs
-        )
+    def _compute_price(self, product, quantity, uom, **kwargs):
+        result = super()._compute_price(product, quantity, uom, **kwargs)
         context = self.env.context
-        if self.compute_price == "formula" and self.base == "supplierinfo":
+        date = kwargs.get("date")
+        if self.compute_price in ("discount", "markup") and self.base == "supplierinfo":
             result = product.sudo()._get_supplierinfo_pricelist_price(
                 self,
                 date=date or context.get("date", fields.Date.today()),
@@ -58,9 +57,8 @@ class ProductPricelistItem(models.Model):
                         quantity=quantity,
                         date=date or context.get("date", fields.Date.today()),
                     )
+                    .get("supplierinfo")
                 )
-                if seller and seller.product_uom_id != product.uom_id:
-                    result = seller.product_uom_id._compute_price(
-                        result, product.uom_id
-                    )
+                if seller and seller.uom_id != product.uom_id:
+                    result = seller.uom_id._compute_price(result, product.uom_id)
         return result

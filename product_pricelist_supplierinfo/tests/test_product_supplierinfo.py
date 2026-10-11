@@ -5,7 +5,7 @@
 
 from datetime import date
 
-from odoo import Command
+from odoo import Command, fields
 from odoo.tests import tagged
 
 from odoo.addons.base.tests.common import BaseCommon
@@ -13,6 +13,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 @tagged("product_supplier_info")
 class TestProductSupplierinfo(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -45,7 +47,7 @@ class TestProductSupplierinfo(BaseCommon):
                             "partner_id": cls.supplier1.id,
                             "min_qty": 1,
                             "price": 1200,
-                            "product_uom_id": cls.env.ref("uom.product_uom_dozen").id,
+                            "uom_id": cls.env.ref("uom.product_uom_dozen").id,
                         }
                     ),
                 ],
@@ -57,7 +59,7 @@ class TestProductSupplierinfo(BaseCommon):
                 "item_ids": [
                     Command.create(
                         {
-                            "compute_price": "formula",
+                            "compute_price": "markup",
                             "base": "supplierinfo",
                             "price_discount": 0,
                             "min_quantity": 1.0,
@@ -278,8 +280,9 @@ class TestProductSupplierinfo(BaseCommon):
         """
         # Setting the currencies and rates for the test, so we can have a supplierinfo
         # and pricelist with different currencies
-        currency_usd = self.setup_other_currency("USD", rates=[(date.today(), 1)])
-        currency_mxn = self.setup_other_currency("MXN", rates=[(date.today(), 20)])
+        today = fields.Date.today()
+        currency_usd = self.setup_other_currency("USD", rates=[(today, 1)])
+        currency_mxn = self.setup_other_currency("MXN", rates=[(today, 20)])
 
         # Setting the item with the product
         self.pricelist.item_ids[0].write(

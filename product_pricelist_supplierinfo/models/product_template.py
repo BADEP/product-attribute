@@ -33,16 +33,18 @@ class ProductTemplate(models.Model):
         if product:
             if isinstance(date, datetime):
                 date = date.date()
-            seller = product.with_context(
-                override_min_qty=rule.no_supplierinfo_min_quantity
-            )._select_seller(
-                # For a public user this record could be not accessible, but we
-                # need to get the price anyway
-                partner_id=self.env.context.get(
-                    "force_filter_supplier_id", rule.sudo().filter_supplier_id
-                ),
-                quantity=quantity,
-                date=date,
+            seller = (
+                product.with_context(override_min_qty=rule.no_supplierinfo_min_quantity)
+                ._select_seller(
+                    # For a public user this record could be not accessible, but we
+                    # need to get the price anyway
+                    partner_id=self.env.context.get(
+                        "force_filter_supplier_id", rule.sudo().filter_supplier_id
+                    ),
+                    quantity=quantity,
+                    date=date,
+                )
+                .get("supplierinfo")
             )
             if seller:
                 price = seller._get_supplierinfo_pricelist_price(
