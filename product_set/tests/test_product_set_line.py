@@ -9,6 +9,8 @@ from .common import ProductSetCommon
 class TestProductSetLine(ProductSetCommon):
     """Tests for product.set.line uom_id field."""
 
+    _test_user_groups = None
+
     def test_product_uom_id_false_without_product(self):
         """uom_id is False for section/note lines that have no product."""
         line = self.env["product.set.line"].create(
@@ -46,12 +48,14 @@ class TestProductSetLine(ProductSetCommon):
     def test_product_uom_id_cleared_when_product_removed(self):
         # uom_id becomes False when the product is unset via onchange (form simulation).
         self.env.user.group_ids |= self.env.ref("uom.group_uom")
-        with Form(self.product_set_1) as set_form:
-            with set_form.set_line_ids.edit(0) as line_form:
-                self.assertTrue(line_form.product_uom_id)
-                line_form.product_id = self.env["product.product"]
-                self.assertFalse(line_form.product_uom_id)
-                line_form.product_id = self.product
+        with (
+            Form(self.product_set_1) as set_form,
+            set_form.set_line_ids.edit(0) as line_form,
+        ):
+            self.assertTrue(line_form.product_uom_id)
+            line_form.product_id = self.env["product.product"]
+            self.assertFalse(line_form.product_uom_id)
+            line_form.product_id = self.product
 
     def test_product_uom_id_stored_on_create(self):
         """uom_id is stored in the database immediately on creation."""

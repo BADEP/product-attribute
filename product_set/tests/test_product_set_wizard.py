@@ -6,6 +6,8 @@ from .common import ProductSetCommon
 
 
 class TestProductSetWizard(ProductSetCommon):
+    _test_user_groups = None
+
     def _create_wizard(self, product_set=None, qty=1):
         return self.env["product.set.wizard"].create(
             {

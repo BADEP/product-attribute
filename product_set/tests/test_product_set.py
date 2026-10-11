@@ -9,6 +9,8 @@ from .common import ProductSetCommon
 class TestProductSet(ProductSetCommon):
     """Test Product set"""
 
+    _test_user_groups = None
+
     def test_name(self):
         product_set = self.product_set_1
         # no ref
