@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="product_supplierinfo_tree_view_indirect_cost" model="ir.ui.view">
         <field name="name">product.supplierinfo.list.view.indirect_cost</field>
