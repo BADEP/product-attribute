@@ -3,10 +3,8 @@
 
 {
     "name": "Product Supplier Info Comment",
-    "summary": """
-        Add the comment field to the product supplier info
-        """,
-    "version": "19.0.1.0.0",
+    "summary": "Add the comment field to the product supplier info",
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/product-attribute",
     "author": "Tecnativa, Odoo Community Association (OCA)",
