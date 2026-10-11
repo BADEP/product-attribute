@@ -2,11 +2,13 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProductCompanyDefault(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         # Enable the configuration using ir.config_parameter
-        cls.env["ir.config_parameter"].sudo().set_param(
+        cls.env["ir.config_parameter"].sudo().set_str(
             "product_company_default.default_company_enable", "1"
         )
 

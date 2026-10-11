@@ -15,7 +15,7 @@ class ProductTemplate(models.Model):
         param = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param("product_company_default.default_company_enable")
+            .get_str("product_company_default.default_company_enable")
         )
         if param == "1":
             return self.env.company
