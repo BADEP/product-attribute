@@ -6,10 +6,10 @@
         t-inherit-mode="extension"
     >
         <!-- Add additional info to render-->
-        <xpath expr="//t[@t-call='product_matrix.matrix']" position="inside">
-            <t t-set="secondary_unit_id" t-value="secondaryUnitId" />
-            <t t-set="secondary_units" t-value="secondaryUnits" />
-            <t t-set="uom_name" t-value="uomName" />
+        <xpath expr="//t[@t-call='product_matrix.matrix']" position="attributes">
+            <attribute name="secondary_unit_id">this.secondaryUnitId</attribute>
+            <attribute name="secondary_units">this.secondaryUnits</attribute>
+            <attribute name="uom_name">this.uomName</attribute>
         </xpath>
     </t>
 </templates>

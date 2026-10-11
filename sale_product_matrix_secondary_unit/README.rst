@@ -21,13 +21,13 @@ Secondary unit in product matrix
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproduct--attribute-lightgray.png?logo=github
-    :target: https://github.com/OCA/product-attribute/tree/19.0/sale_product_matrix_secondary_unit
+    :target: https://github.com/OCA/product-attribute/tree/20.0/sale_product_matrix_secondary_unit
     :alt: OCA/product-attribute
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/product-attribute-19-0/product-attribute-19-0-sale_product_matrix_secondary_unit
+    :target: https://translation.odoo-community.org/projects/product-attribute-20-0/product-attribute-20-0-sale_product_matrix_secondary_unit
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/product-attribute&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -46,12 +46,12 @@ Configuration
 
 To configure this module, you need to:
 
-- Go to a product with variants or create one.
-- In the *Attributes and variants* tab, *Sales Variant Selection*
-  section, select **Order grid entry**.
-- In the *General information* tab, *Secondary unit of measure* section,
-  add one or several secondary units.
-- You can also set a default **Sale secondary unit**.
+-  Go to a product with variants or create one.
+-  In the *Attributes and variants* tab, *Sales Variant Selection*
+   section, select **Order grid entry**.
+-  In the *General information* tab, *Secondary unit of measure*
+   section, add one or several secondary units.
+-  You can also set a default **Sale secondary unit**.
 
 Usage
 =====
@@ -67,10 +67,10 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-- When could have several lines from the same template with different
-  secondary units. In that case, the use of the matrix is discarded to
-  avoid missmatching values. From that moment, the products are forced
-  to be configured with the regular product configurator.
+-  When could have several lines from the same template with different
+   secondary units. In that case, the use of the matrix is discarded to
+   avoid missmatching values. From that moment, the products are forced
+   to be configured with the regular product configurator.
 
 Bug Tracker
 ===========
@@ -78,7 +78,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/product-attribute/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20sale_product_matrix_secondary_unit%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/product-attribute/issues/new?body=module:%20sale_product_matrix_secondary_unit%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -93,10 +93,10 @@ Authors
 Contributors
 ------------
 
-- Tecnativa (https://www.tecnativa.com)
+-  Tecnativa (https://www.tecnativa.com)
 
-  - David Vidal
-  - Carlos Roca
+   -  David Vidal
+   -  Carlos Roca
 
 Maintainers
 -----------
@@ -119,6 +119,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-carlos-lopez-tecnativa| 
 
-This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/19.0/sale_product_matrix_secondary_unit>`_ project on GitHub.
+This module is part of the `OCA/product-attribute <https://github.com/OCA/product-attribute/tree/20.0/sale_product_matrix_secondary_unit>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

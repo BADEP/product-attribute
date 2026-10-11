@@ -23,7 +23,7 @@ patch(ProductMatrixDialog.prototype, {
    * @override
    * Send the selected secondary unit along with the matrix changes.
    */
-  _onConfirm() {
+  async _onConfirm() {
     if (!this.secondaryUnits.length) {
       return super._onConfirm(...arguments);
     }
@@ -47,15 +47,17 @@ patch(ProductMatrixDialog.prototype, {
     }
     if (matrixChanges.length > 0 || secondaryUnitChanged) {
       // NB: server also removes current line opening the matrix
-      this.props.record.update({
+      await this.props.record.update({
         grid: JSON.stringify({
           changes: matrixChanges,
           product_template_id: this.props.product_template_id,
+          sequence: this.props.defaultSequence,
           secondary_unit: secondaryUnit,
         }),
         // To say that the changes to grid have to be applied to the SO.
         grid_update: true,
       });
+      await this.props.record.data.order_line._sort();
     }
     this.props.close();
   },

@@ -73,10 +73,9 @@ class SaleOrder(models.Model):
             # create or find product variant from combination
             product = product_template._create_product_variant(combination)
             order_lines = self.order_line.filtered(
-                lambda line, product=product, no_variant_attr_values=no_variant_attr_values: (
-                    line.product_id.id == product.id
-                    and line.product_no_variant_attribute_value_ids.ids
-                    == no_variant_attr_values.ids
+                lambda line, prod=product, nv_values=no_variant_attr_values: (
+                    line.product_id.id == prod.id
+                    and line.product_no_variant_attribute_value_ids.ids == nv_values.ids
                 )
             )
             order_lines.secondary_uom_id = secondary_unit
