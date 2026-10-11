@@ -138,7 +138,7 @@ class CommonProductPricelistAlternative(BaseCommon):
                 "item_ids": [
                     Command.create(
                         {
-                            "compute_price": "formula",
+                            "compute_price": "discount",
                             "base": "pricelist",
                             "base_pricelist_id": cls.pricelist01.id,
                             "applied_on": "3_global",
@@ -162,10 +162,10 @@ class CommonProductPricelistAlternative(BaseCommon):
                 "item_ids": [
                     Command.create(
                         {
-                            "compute_price": "percentage",
+                            "compute_price": "discount",
                             "applied_on": "2_product_category",
                             "categ_id": cls.product_categ01.id,
-                            "percent_price": 40,
+                            "price_discount": 40,
                         }
                     ),
                 ],
@@ -195,7 +195,7 @@ class CommonProductPricelistAlternative(BaseCommon):
                 "item_ids": [
                     Command.create(
                         {
-                            "compute_price": "formula",
+                            "compute_price": "markup",
                             "base": "list_price",
                             "price_discount": -15,
                             "product_tmpl_id": cls.configurable_product_template.id,

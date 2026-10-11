@@ -17,13 +17,17 @@ class PricelistItem(models.Model):
         required=True,
     )
 
-    def _compute_base_price(self, product, quantity, uom, date, currency, **kwargs):
+    def _compute_base_price(self, product, quantity, uom, **kwargs):
         # OVERRIDE: to skip the alternative pricelist computation to avoid
         # leaking alternative promotional prices into base formula computations.
+        item = self
         if self.base == "pricelist" and self.base_pricelist_id:
-            self = self.with_context(skip_alternative_pricelist=True)
-        return super()._compute_base_price(
-            product, quantity, uom, date, currency, **kwargs
+            item = self.with_context(skip_alternative_pricelist=True)
+            # Base prices pre-computed by the caller may include alternative
+            # prices: force their computation with the context above.
+            kwargs.pop("base_prices", None)
+        return super(PricelistItem, item)._compute_base_price(
+            product, quantity, uom, **kwargs
         )
 
     @api.constrains("base")
@@ -31,7 +35,7 @@ class PricelistItem(models.Model):
         """Alternative pricelists can not contain items based on other pricelist"""
         for item in self:
             if (
-                item.compute_price == "formula"
+                item.compute_price in ("discount", "markup")
                 and item.base == "pricelist"
                 and item.pricelist_id.is_alternative_to_pricelist_count
             ):

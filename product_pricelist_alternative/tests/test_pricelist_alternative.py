@@ -9,6 +9,8 @@ from .common import CommonProductPricelistAlternative
 
 @tagged("post_install", "-at_install")
 class TestPricelistAlternative(CommonProductPricelistAlternative):
+    _test_user_groups = None
+
     def test_is_alternative_to_pricelist_count(self):
         """Test the alternative pricelist usage count is correctly computed."""
         self.assertEqual(
@@ -184,7 +186,7 @@ class TestPricelistAlternative(CommonProductPricelistAlternative):
         with self.assertRaisesRegex(ValidationError, msg):
             self.alternative_pricelist_01.item_ids.write(
                 {
-                    "compute_price": "formula",
+                    "compute_price": "discount",
                     "base": "pricelist",
                     "base_pricelist_id": self.alternative_pricelist_02.id,
                 }

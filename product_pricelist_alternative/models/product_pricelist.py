@@ -171,7 +171,8 @@ class Pricelist(models.Model):
         for pricelist in self:
             if pricelist.alternative_pricelist_ids.item_ids.filtered(
                 lambda item: (
-                    item.compute_price == "formula" and item.base == "pricelist"
+                    item.compute_price in ("discount", "markup")
+                    and item.base == "pricelist"
                 )
             ):
                 raise ValidationError(
