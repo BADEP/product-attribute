@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_product_document_type_user,product.document.type User,product.document.type,base.group_user,r,
+access_product_document_type_manager,product.document.type Manager,product.document.type,sales_team.group_sale_manager,crud,
+product_document_type_comp_rule,product document type company rule,product.document.type,,crud,"['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)]"

@@ -23,7 +23,7 @@
         id="product_document_type_menu"
         name="Document Types"
         action="product_document_type_action"
-        parent="sale.prod_config_main"
+        parent="sale.product_menu_catalog"
         sequence="32"
     />
 </odoo>
