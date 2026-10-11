@@ -3,10 +3,11 @@
 
 {
     "name": "Product Category Type",
-    "summary": """
-        Add Type field on Product Categories
-        to distinguish between parent and final categories""",
-    "version": "19.0.1.0.0",
+    "summary": (
+        "Add Type field on Product Categories to distinguish between parent and "
+        "final categories"
+    ),
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "author": "GRAP,Odoo Community Association (OCA)",
     "maintainers": ["legalsylvain"],
