@@ -37,5 +37,4 @@ class ProductSupplierInfo(models.Model):
                 {f: x[f] for f in x._fields if (f in fields if fields else True)}
                 for x in new_ids
             ]
-        else:
-            return super().read(fields=fields, load=load)
+        return super().read(fields=fields, load=load)
