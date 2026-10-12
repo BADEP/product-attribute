@@ -4,7 +4,7 @@
 {
     "name": "Pricelist Rule UoM",
     "summary": "Set UoM in Pricelist Rules.",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Sales/Sales",
     "website": "https://github.com/OCA/product-attribute",
     "author": "Aion Tech, Odoo Community Association (OCA)",

@@ -9,6 +9,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProductPricelistItem(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -33,13 +35,13 @@ class TestProductPricelistItem(BaseCommon):
         pricelist_g_kg_form.name = "Test pricelist"
         with pricelist_g_kg_form.item_ids.new() as item:
             item.product_tmpl_id = cls.product_1000_kg.product_tmpl_id
-            item.compute_price = "formula"
+            item.compute_price = "discount"
             item.price_surcharge = 500
             item.uom_id = cls.g_uom
             item.uom_min_quantity = 1
         with pricelist_g_kg_form.item_ids.new() as item:
             item.product_tmpl_id = cls.product_1000_kg.product_tmpl_id
-            item.compute_price = "formula"
+            item.compute_price = "discount"
             item.uom_id = cls.kg_uom
             item.uom_min_quantity = 1
         cls.pricelist_g_kg = pricelist_g_kg_form.save()
