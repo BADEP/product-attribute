@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+    <t
+        t-name="sale_product_matrix_secondary_unit.dialog"
+        t-inherit="product_matrix.dialog"
+        t-inherit-mode="extension"
+    >
+        <!-- Add additional info to render-->
+        <xpath expr="//t[@t-call='product_matrix.matrix']" position="attributes">
+            <attribute name="secondary_unit_id">this.secondaryUnitId</attribute>
+            <attribute name="secondary_units">this.secondaryUnits</attribute>
+            <attribute name="uom_name">this.uomName</attribute>
+        </xpath>
+    </t>
+</templates>
