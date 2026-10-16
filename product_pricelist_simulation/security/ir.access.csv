@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_wizard_preview_pricelist,access.wizard.preview.pricelist,wizard.preview.pricelist,base.group_system,cru,
+access_wizard_preview_pricelist_line,access.wizard.preview.pricelist.line,wizard.preview.pricelist.line,base.group_system,cru,
