@@ -1,6 +1,5 @@
 # Copyright 2021 Tecnativa - Sergio Teruel
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from typing import ClassVar
 
 from odoo import api, fields, models
 
@@ -31,7 +30,7 @@ class ProductSecondaryUnitMixin(models.AbstractModel):
 
     _name = "product.secondary.unit.mixin"
     _description = "Product Secondary Unit Mixin"
-    _secondary_unit_fields: ClassVar[dict[str, str]] = {}
+    _secondary_unit_fields = {}  # noqa: RUF012
     _product_uom_field = "uom_id"
 
     @api.model
