@@ -1,7 +1,7 @@
 # Copyright 2021 Tecnativa - Sergio Teruel
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
 from odoo import api, fields, models
-from odoo.tools.float_utils import float_round
 
 
 class ProductSecondaryUnitMixin(models.AbstractModel):
@@ -30,7 +30,7 @@ class ProductSecondaryUnitMixin(models.AbstractModel):
 
     _name = "product.secondary.unit.mixin"
     _description = "Product Secondary Unit Mixin"
-    _secondary_unit_fields = {}
+    _secondary_unit_fields = {}  # noqa: RUF012
     _product_uom_field = "uom_id"
 
     @api.model
@@ -81,9 +81,8 @@ class ProductSecondaryUnitMixin(models.AbstractModel):
         uom_product = self.product_id[self._product_uom_field]
         if uom_line != uom_product:
             qty = uom_line._compute_quantity(qty, uom_product)
-        return float_round(
-            qty / (self.secondary_uom_id.factor or 1.0),
-            precision_rounding=self.secondary_uom_id.uom_id.rounding,
+        return self.secondary_uom_id.uom_id.round(
+            qty / (self.secondary_uom_id.factor or 1.0)
         )
 
     @api.depends(lambda x: x._get_secondary_uom_qty_depends())
@@ -136,7 +135,7 @@ class ProductSecondaryUnitMixin(models.AbstractModel):
         if not self.secondary_uom_id:
             self.secondary_uom_qty = 0.0
             return
-        elif self.secondary_uom_id.dependency_type == "independent":
+        if self.secondary_uom_id.dependency_type == "independent":
             return
         qty_line = self._get_quantity_from_line()
         self.secondary_uom_qty = self._convert_qty_to_secondary_uom(qty_line)

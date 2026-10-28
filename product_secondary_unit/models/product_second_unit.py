@@ -6,7 +6,7 @@ from odoo import api, fields, models
 class ProductSecondaryUnit(models.Model):
     _name = "product.secondary.unit"
     _description = "Product Secondary Unit"
-    _rec_names_search = ["name", "code"]
+    _rec_names_search = ("name", "code")
 
     name = fields.Char(required=True, translate=True)
     code = fields.Char()
