@@ -1,13 +1,12 @@
 # Copyright 2018 Sergio Teruel - Tecnativa <sergio.teruel@tecnativa.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-import typing
 
 from odoo import fields, models
 
 
 class ProductTemplate(models.Model):
     _name = "product.template"
-    _inherit: typing.ClassVar[list[str]] = [
+    _inherit = [  # noqa: RUF012
         "product.template",
         "product.cost.security.mixin",
     ]
